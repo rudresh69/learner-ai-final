@@ -47,7 +47,9 @@ def google_callback():
         "session_id": session_id or ""
     })
 
-    return redirect(f"{FRONTEND_URL}/?logged_in=true")
+    # ✅ Instead of passing login success via query string,
+    # use frontend polling after redirect to /auth-success
+    return redirect(f"{FRONTEND_URL}/auth-success")
 
 @bp.route("/user")
 def get_user():
